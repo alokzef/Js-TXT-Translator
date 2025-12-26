@@ -9,7 +9,7 @@ Built using **HTML**, **CSS**, and **Vanilla JavaScript**, integrating with **[G
 
 ## 🚀 Demo
 
-* **Live Demo Link:** [Js-Language-Translator-main](https://alokzef.github.io/Js-Language-Translator-main/)*
+* **Live Demo Link:** [Js-Language-Translator-main](https://alokzef.github.io/Js-Language-Translator-main/)
 
 ---
 
