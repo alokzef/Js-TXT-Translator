@@ -1,10 +1,12 @@
 :root {
-  --primary-color: #356aff;
-  --bg-color: #f5f5f5;
-  --light-bg-color: #fff;
-  --text-color: #111116;
-  --light-text-color: #cdccd1;
-  --primary-text-color: #fff;
+  /* Pink Sky Theme */
+  --primary-color: #ff85a2; /* Vibrant Pink */
+  --bg-color: #ffeaf1; /* Soft Pink Background */
+  --light-bg-color: #ffffff; /* White Clouds */
+  --text-color: #5c3c4c; /* Dark Mauve */
+  --light-text-color: #a38a96; /* Muted Mauve */
+  --primary-text-color: #ffffff; /* White */
+  --transition-speed: 0.3s;
 }
 
 ::-webkit-scrollbar {
@@ -39,13 +41,20 @@ body {
   justify-content: center;
   color: var(--text-color);
   background-color: var(--bg-color);
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
 }
 
 body.dark {
-  --bg-color: #878683;
-  --light-bg-color: #444444;
-  --text-color: #fff;
-  --light-text-color: #58575c;
+  /* Neon Crimson Theme (Slightly Dark) */
+  --primary-color: #ff004d; /* Neon Crimson */
+  --bg-color: #41353a; /* Slightly Dark Mauve */
+  --light-bg-color: #5c4b51; /* Darker Mauve for cards */
+  --text-color: #f0f0f0; /* Off-white */
+  --light-text-color: #a9a9a9; /* Muted Gray */
+  --primary-text-color: #ffffff; /* White for text on primary buttons */
+
+  text-shadow: 0 0 2px rgba(255, 0, 77, 0.5);
 }
 
 .container {
@@ -61,6 +70,8 @@ body.dark {
   padding: 30px;
   border-radius: 20px;
   background-color: var(--light-bg-color);
+  transition: background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
 }
 
 .container .card .from,
@@ -81,7 +92,7 @@ body.dark {
 .container .card .heading {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--light-text-color);
+  color: var(--text-color);
   white-space: nowrap;
 }
 
@@ -98,7 +109,8 @@ body.dark {
   border-radius: 30px;
   background-color: var(--bg-color);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all var(--transition-speed) ease;
+  color: var(--text-color);
 }
 
 .dropdown-container .dropdown-toggle span {
@@ -108,7 +120,7 @@ body.dark {
 
 .dropdown-container .dropdown-toggle ion-icon {
   font-size: 20px;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-speed) ease;
 }
 
 .dropdown-container.active .dropdown-toggle {
@@ -132,7 +144,8 @@ body.dark {
   list-style: none;
   flex-direction: column;
   background-color: var(--bg-color);
-  transition: all 1s;
+  transition: opacity var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
   border-radius: 0 0 20px 20px;
 }
 
@@ -150,7 +163,7 @@ body.dark {
   cursor: pointer;
   margin-bottom: 5px;
   border-bottom: 1px solid var(--light-bg-color);
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed) ease;
 }
 
 .dropdown-container .dropdown-menu li:hover {
@@ -159,6 +172,7 @@ body.dark {
 .dropdown-container .dropdown-menu li.active {
   color: var(--primary-text-color);
   background-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
 }
 
 .container .text-area {
@@ -175,6 +189,18 @@ body.dark {
   border: none;
   color: var(--text-color);
   font-size: 20px;
+  transition: color var(--transition-speed) ease;
+}
+
+.container textarea::placeholder {
+  color: var(--light-text-color);
+}
+
+.container textarea:disabled {
+  /* Ensure disabled text color matches the theme, overriding browser defaults */
+  color: var(--text-color);
+  -webkit-text-fill-color: var(--text-color); /* Override for WebKit browsers */
+  opacity: 1; /* Reset browser-applied opacity */
 }
 
 .container .text-area .chars {
@@ -192,38 +218,16 @@ body.dark {
   flex-direction: column;
   justify-content: center;
   padding-top: 20px;
-  border-top: 2px solid var(--bg-color);
+  border-top: 1px solid var(--bg-color);
+  transition: border-color var(--transition-speed) ease;
 }
 
 .card-bottom p {
   margin-bottom: 20px;
 }
 
-.card-bottom label {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0 20px;
-  cursor: pointer;
-  border-radius: 32px;
-  background-color: var(--bg-color);
-}
-
-.card-bottom label:hover {
-  color: var(--primary-text-color);
-  background-color: var(--primary-color);
-}
-
-.card-bottom span {
-  font-size: 15px;
-  pointer-events: none;
-}
-
-.card-bottom ion-icon {
-  font-size: 22px;
-}
-
+/* --- Shared styles for bottom buttons/labels --- */
+.card-bottom label,
 .card-bottom button {
   height: 50px;
   display: flex;
@@ -233,14 +237,26 @@ body.dark {
   border-radius: 30px;
   border: none;
   outline: none;
-  color: var(--text-color);
   cursor: pointer;
+  color: var(--text-color);
   background-color: var(--bg-color);
+  font-size: 15px;
+  transition: all var(--transition-speed) ease;
 }
 
+.card-bottom label:hover,
 .card-bottom button:hover {
   color: var(--primary-text-color);
   background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.card-bottom span {
+  pointer-events: none; /* Ensure clicking the text triggers the parent label/button */
+}
+
+.card-bottom ion-icon {
+  font-size: 22px;
 }
 
 .container .center {
@@ -259,10 +275,11 @@ body.dark {
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
-  border: 5px solid var(--bg-color);
-  transition: all 0.3s;
+  border: 3px solid var(--bg-color);
+  transition: all var(--transition-speed) ease;
   color: var(--primary-text-color);
   background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
 }
 
 .swap-position ion-icon {
@@ -271,6 +288,7 @@ body.dark {
 
 .swap-position:hover {
   transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
 }
 
 .mode {
@@ -286,17 +304,23 @@ body.dark {
 }
 
 .toggle-track {
-  width: 30px;
-  height: 50px;
+  width: 50px;
+  height: 30px;
   border-radius: 30px;
   display: flex;
   align-items: center;
-  flex-direction: column;
-  padding: 3px 0;
+  flex-direction: row;
+  padding: 0 3px;
   justify-content: space-between;
-  border: 1px solid var(--light-text-color);
+  /* Make toggle more visible */
   background-color: var(--light-bg-color);
-  transition: all 0.3s ease;
+  border: 1px solid var(--light-text-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
+}
+
+.toggle-track:hover {
+  border-color: var(--primary-color);
 }
 
 .toggle-checkbox {
@@ -305,22 +329,65 @@ body.dark {
 
 .toggle-thumb {
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 2.5px;
+  left: 2.5px;
   width: 25px;
-  height: 20px;
+  height: 25px;
   border-radius: 50%;
   background-color: var(--primary-color);
-  transition: all 0.5s;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    background-color var(--transition-speed) ease;
 }
 
 .toggle input:checked ~ .toggle-thumb {
-  transform: translateY(25px);
+  transform: translateX(20px);
 }
 
 .toggle img {
   width: 20px;
   height: 20px;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    filter var(--transition-speed) ease;
+  /* Add a drop shadow for visibility in light mode without changing icon color */
+  filter: drop-shadow(0 0 2px var(--text-color));
+}
+
+/* --- Icon Animation States --- */
+
+/* Light Mode: Inactive moon is scaled down */
+.toggle-track img:last-of-type {
+  transform: scale(0.6);
+}
+
+/* Dark Mode: Inactive sun is scaled down and light gray */
+.toggle input:checked ~ img:first-of-type {
+  transform: scale(0.6);
+  filter: grayscale(1) brightness(1.5);
+}
+
+/* Dark Mode: Active moon gets color back and animates */
+.toggle input:checked ~ img:last-of-type {
+  transform: scale(1) rotate(360deg);
+  filter: none;
+}
+
+/* --- Accessibility Focus Styles --- */
+.dropdown-container .dropdown-toggle:focus-visible,
+.card-bottom label:focus-visible,
+.card-bottom button:focus-visible,
+.swap-position:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Cyberpunk focus style */
+body.dark .dropdown-container .dropdown-toggle:focus-visible,
+body.dark .card-bottom label:focus-visible,
+body.dark .card-bottom button:focus-visible,
+body.dark .swap-position:focus-visible {
+  outline: none;
+  box-shadow: 0 0 10px var(--primary-color), 0 0 0 2px var(--light-bg-color),
+    0 0 0 4px var(--primary-color);
 }
 
 /* Media Querries */
@@ -336,11 +403,11 @@ body.dark {
     width: 100%;
   }
 
-  .container.card .from {
+  .container .card .from {
     margin-right: 0;
   }
 
-  .container.card .to {
+  .container .card .to {
     margin-left: 0;
   }
 

@@ -1,9 +1,9 @@
-# 🌐 JavaScript Text to Text Translation Website
+# 🌐 JavaScript Text to Text Translator
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Version](https://img.shields.io/badge/version-1.0.0-green.svg) ![JavaScript](https://img.shields.io/badge/language-JavaScript-yellow.svg)
 
 A robust, web-based application that provides real-time text translation between multiple languages.
-Built using **HTML**, **CSS**, and **Vanilla JavaScript**, integrating with **[Google Translate API]**.
+Built using **HTML**, **CSS**, and **Vanilla JavaScript**, this project leverages an informal Google Translate endpoint to provide its functionality.
 
 ---
 
@@ -15,12 +15,12 @@ Built using **HTML**, **CSS**, and **Vanilla JavaScript**, integrating with **[G
 
 ## ✨ Features
 
-* **Multi-Language Support:** Translate text between [X] different languages.
-* **Real-time Translation:** Get instant results as you type (or upon clicking translate).
+* **Multi-Language Support:** Translate text between 58 different languages.
+* **Real-time Translation:** Get instant results as you type, with debouncing to optimize performance.
 * **Auto-Detect Language:** Automatically identifies the source language.
-* **Upload a TXT file:** Users can upload text file to be translated.
-* **Download the translated output:** Users can download translated text as a TXT file.
-* **Copy to Clipboard:** Easily copy the translation result with one click.
+* **File Upload:** Translate content directly from `.txt` files.
+* **Download Translation:** Save the translated text as a `.txt` file.
+* **Dark Mode:** A sleek dark mode for comfortable viewing in low-light environments.
 * **Responsive Design:** Fully optimized for desktop, tablet, and mobile devices.
 
 ---
@@ -28,17 +28,36 @@ Built using **HTML**, **CSS**, and **Vanilla JavaScript**, integrating with **[G
 ## 🛠 Tech Stack
 
 * **Frontend:** HTML5, CSS3, JavaScript (ES6+)
-* **API:** [Google Cloud Translation API]
-* **Icons:** [Boxicons]
-* **Deployment:** [GitHub Pages]
+* **API:** An unofficial, free endpoint from Google Translate.
+* **Deployment:** GitHub Pages
 
 ---
 
-## 📋 Prerequisites
+## 🏁 Getting Started
 
-Before running the project, make sure you have the following:
+To get a local copy up and running, follow these simple steps.
 
-1.  A modern web browser (Chrome, Firefox, Edge).
-2.  A text editor (VS Code recommended).
+### Prerequisites
+
+*   A modern web browser (e.g., Chrome, Firefox, Edge).
+*   A code editor (e.g., VS Code).
+
+### Installation
+
+1.  Clone the repository:
+    ```sh
+    git clone https://github.com/alokzef/Js-TXT-Translator.git
+    ```
+2.  Navigate to the project directory:
+    ```sh
+    cd Js-TXT-Translator
+    ```
+3.  Open the `index.html` file in your web browser to view the application.
+
+---
+
+## ⚠️ Note on API Usage
+
+This project uses an unofficial, undocumented API endpoint from Google Translate (`translate.googleapis.com`). This endpoint is not intended for production use and may be subject to rate-limiting, breaking changes, or discontinuation by Google at any time. For production applications, it is highly recommended to use the official Google Cloud Translation API.
 
 ---
